@@ -1,0 +1,41 @@
+plugins {
+    id 'groovy'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.jenkins-ci.org/releases' }
+}
+
+dependencies {
+    implementation localGroovy()
+    testImplementation 'com.lesfurets:jenkins-pipeline-unit:1.20'
+    testImplementation platform('org.junit:junit-bom:5.10.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs = ['src']
+        }
+        resources {
+            srcDirs = ['resources', 'vars']
+        }
+    }
+    test {
+        groovy {
+            srcDirs = ['test']
+        }
+        resources {
+            srcDirs = ['test/resources']
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

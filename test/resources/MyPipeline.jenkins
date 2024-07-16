@@ -1,0 +1,3 @@
+// https://jenkins.io/
+library 'jenkinspipelineunit-issue-585'
+pipelines.myPipeline()
